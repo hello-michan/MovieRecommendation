@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.michan.movierecommendation.model.Movie;
 import com.michan.movierecommendation.service.Movies;
 
 @RestController
@@ -24,9 +25,9 @@ public class MovierecommendationController {
 	}
 
 	@GetMapping("/movieDetail")
-	public void getMovieDetail(@RequestParam(value = "mov_id") int mov_id,
+	public Movie getMovieDetail(@RequestParam(value = "mov_id") int mov_id,
 			@RequestParam(value = "mov_name") String mov_name) {
 		Movies movieDetail = new Movies();
-		movieDetail.getDetail(""+mov_id, mov_name);
+		return movieDetail.getDetail(""+mov_id, mov_name);
 	}
 }
